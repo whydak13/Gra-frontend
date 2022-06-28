@@ -1,0 +1,26 @@
+.popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+
+background-color: white;
+border: 5px solid darkgray;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.popup-inner{
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 800px;
+   
+  
+
+}
