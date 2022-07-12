@@ -1,5 +1,3 @@
-import React from "react";
-
 export function handleSave(name, reach, agility, impact, description) {
   let cost = calulateWeaponCost(reach, agility, impact);
   const requestOptions = {

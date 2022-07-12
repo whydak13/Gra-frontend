@@ -3,14 +3,6 @@ import Popup from "./Popup";
 import WeaponList from "./weaponList";
 import { handleSave, handleEdit } from "./WeaponsBackend";
 import { useState, useEffect } from "react";
-import Table from "react-bootstrap/Table";
-import {
-  Dropdown,
-  Button,
-  ButtonGroup,
-  DropdownButton,
-  MenuItem,
-} from "react-bootstrap";
 
 function WeaponPage() {
   const [buttonPopup, setbuttonPopup] = useState(false);

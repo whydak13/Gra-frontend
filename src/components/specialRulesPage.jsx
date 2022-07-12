@@ -6,14 +6,6 @@ import {
   handleEditSpecialRule,
 } from "./SpecialRulesBackend";
 import { useState, useEffect } from "react";
-import Table from "react-bootstrap/Table";
-import {
-  Dropdown,
-  Button,
-  ButtonGroup,
-  DropdownButton,
-  MenuItem,
-} from "react-bootstrap";
 
 function SpecialRulePage() {
   const [buttonPopup, setbuttonPopup] = useState(false);

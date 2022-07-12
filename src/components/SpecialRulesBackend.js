@@ -1,5 +1,3 @@
-import React from "react";
-
 export function handleSaveSpecialRule(
   name,
   camp_only,

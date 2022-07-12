@@ -30,11 +30,11 @@ function App() {
   return (
     <BrowserRouter>
       <div>
-        <Navbar bg="dark" variant="dark" expand="sm" collapseOnSelect="true">
+        <Navbar bg="dark" variant="dark" expand="sm">
           <Navbar.Brand>Logo</Navbar.Brand>
 
           <Navbar.Toggle />
-          <Navbar.Collapse collapseOnSelect="true">
+          <Navbar.Collapse>
             <Nav>
               <Nav.Link as={Link} to="/">
                 Stronga główna
