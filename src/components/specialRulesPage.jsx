@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import Popup from "./Popup";
 import SpecialRuleList from "./specialRuleList";
-import {
-  handleSaveSpecialRule,
-  handleEditSpecialRule,
-} from "./SpecialRulesBackend";
+import { handleSave, handleEdit } from "./Backend";
 import { useState, useEffect } from "react";
 
 function SpecialRulePage() {
@@ -12,7 +9,6 @@ function SpecialRulePage() {
   const [editPopup, seteditPopup] = useState(false);
   const [addFormData, setAddFormData] = useState({
     specialRuleName: "",
-    //specialRuleCampOnly: false,
     specialRuleCostAdd: "",
     specialRuleCostMultiply: "",
     specialRuleDescription: "",
@@ -35,27 +31,33 @@ function SpecialRulePage() {
 
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
-    handleSaveSpecialRule(
-      addFormData.specialRuleName,
-      specialRuleCampOnly,
-      addFormData.specialRuleCostAdd,
-      addFormData.specialRuleCostMultiply,
-      addFormData.specialRuleDescription
+    handleSave(
+      JSON.stringify({
+        name: addFormData.specialRuleName,
+        camp_only: specialRuleCampOnly,
+        cost_add: addFormData.specialRuleCostAdd,
+        cost_multiply: addFormData.specialRuleCostMultiply,
+        description: addFormData.specialRuleDescription,
+      }),
+      "http://localhost:8080/specialrules/"
     );
     setbuttonPopup(false);
-    this.forceUpdate();
   };
 
   const handleEditFormSubmit = (event) => {
     event.preventDefault();
-    handleEditSpecialRule(
-      addFormData.specialRuleId,
-      addFormData.specialRuleName,
-      specialRuleCampOnly,
-      addFormData.specialRuleCostAdd,
-      addFormData.specialRuleCostMultiply,
-      addFormData.specialRuleDescription
+    handleEdit(
+      JSON.stringify({
+        name: addFormData.specialRuleName,
+        camp_only: specialRuleCampOnly,
+        cost_add: addFormData.specialRuleCostAdd,
+        cost_multiply: addFormData.specialRuleCostMultiply,
+        description: addFormData.specialRuleDescription,
+      }),
+      "http://localhost:8080/specialrules/",
+      addFormData.specialRuleId
     );
+
     seteditPopup(false);
   };
 

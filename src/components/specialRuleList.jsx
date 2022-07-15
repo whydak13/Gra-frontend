@@ -1,45 +1,15 @@
 import React, { Component } from "react";
-import {
-  useTable,
-  useFilters,
-  useGlobalFilter,
-  useAsyncDebounce,
-  useSortBy,
-} from "react-table";
-// A great library for fuzzy filtering/sorting items
-import { matchSorter } from "match-sorter";
+import { useTable, useFilters, useGlobalFilter, useSortBy } from "react-table";
+
 import { useState, useEffect } from "react";
-import styled from "styled-components";
+
 import {
   DefaultColumnFilter,
   noFilter,
   fuzzyTextFilterFn,
 } from "./CustomFilters";
 
-const Styles = styled.div`
-  padding: 1rem;
-  table {
-    border-spacing: 0;
-    border: 1px solid black;
-    tr {
-      :last-child {
-        td {
-          border-bottom: 0;
-        }
-      }
-    }
-    th,
-    td {
-      margin: 0;
-      padding: 0.5rem;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
-      :last-child {
-        border-right: 0;
-      }
-    }
-  }
-`;
+import { Styles } from "./tableStyles";
 
 function SpecialRuleList() {
   const [dataList, setdataList] = useState([]);
@@ -121,12 +91,6 @@ function SpecialRuleList() {
   function Table({ columns, data, renderRowSubComponent }) {
     // Use the state and functions returned from useTable to build your UI
 
-    const hiddenColumns = [
-      {
-        ColumnId: "cost_multiply",
-      },
-    ];
-
     const filterTypes = React.useMemo(
       () => ({
         // Add a new fuzzyTextFilterFn filter type.
@@ -157,6 +121,7 @@ function SpecialRuleList() {
       prepareRow,
       allColumns,
       getToggleHideAllColumnsProps,
+      instance,
       state,
       visibleColumns,
       preGlobalFilteredRows,
@@ -166,7 +131,6 @@ function SpecialRuleList() {
         columns,
         data,
         state,
-        hiddenColumns,
         autoResetHiddenColumns,
         defaultColumn,
         filterTypes,
@@ -176,12 +140,6 @@ function SpecialRuleList() {
       useGlobalFilter,
       useSortBy
     );
-
-    useTable.setHiddenColumns = ["cost_multiply"];
-
-    useTable.setHiddenColumns.autoResetHiddenColumns = false;
-    useTable.autoResetHiddenColumns = false;
-    columns.isVisible = "cost_multiply";
 
     const firstPageRows = rows;
     // Render the UI for your table
@@ -266,13 +224,3 @@ function SpecialRuleList() {
 }
 
 export default SpecialRuleList;
-
-{
-  /*                     {cell.render(() => {
-                        return cell.column.Header == "Koszt"
-                          ? row.values.cost_multiply +
-                              "X +" +
-                              row.values.cost_add
-                          : cell.value;
-                      })}*/
-}

@@ -80,7 +80,7 @@ export function SelectColumnFilter({
         setFilter(e.target.value || undefined);
       }}
     >
-      <option value="">All</option>
+      <option value="">Wybierz...</option>
       {options.map((option, i) => (
         <option key={i} value={option}>
           {option}
@@ -120,7 +120,7 @@ export function SliderColumnFilter({
           setFilter(parseInt(e.target.value, 10));
         }}
       />
-      <button onClick={() => setFilter(undefined)}>Off</button>
+      <button onClick={() => setFilter(undefined)}>Wyłącz</button>
     </>
   );
 }
